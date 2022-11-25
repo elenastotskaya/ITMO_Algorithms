@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <fstream>
 #include <string>
 #include <ctime>
@@ -48,7 +48,7 @@ int main() {
 	saveFile.open("savefile.txt", std::ios::in);
 	if (saveFile.is_open()) {
 		if (numRound > 0) {
-			std::cout << "Загрузить предыдущее сохранение? Y/n ";
+			std::cout << "Р—Р°РіСЂСѓР·РёС‚СЊ РїСЂРµРґС‹РґСѓС‰РµРµ СЃРѕС…СЂР°РЅРµРЅРёРµ? Y/n ";
 			std::string reply;
 			std::cin >> reply;
 			if (reply.front() == 'Y' || reply.front() == 'y') {
@@ -65,7 +65,7 @@ int main() {
 				saveFile >> priceForAcre;
 				saveFile >> totalDead;
 				if (saveFile.fail() || numRound <= 0) {
-					std::cout << "Ошибка в файле сохранения!\n";
+					std::cout << "РћС€РёР±РєР° РІ С„Р°Р№Р»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ!\n";
 					numRound = 1;
 					currentPopulation = INIT_POPULATION;
 					currentWheat = INIT_WHEAT;
@@ -83,7 +83,7 @@ int main() {
 			break;
 		}
 		if (roundResult == 2) {
-			std::cout << "\nВаше правление привело город к гибели и разорению. Жители вымерли или разбрелись по лесам, и город превратился в руины.\n";
+			std::cout << "\nР’Р°С€Рµ РїСЂР°РІР»РµРЅРёРµ РїСЂРёРІРµР»Рѕ РіРѕСЂРѕРґ Рє РіРёР±РµР»Рё Рё СЂР°Р·РѕСЂРµРЅРёСЋ. Р–РёС‚РµР»Рё РІС‹РјРµСЂР»Рё РёР»Рё СЂР°Р·Р±СЂРµР»РёСЃСЊ РїРѕ Р»РµСЃР°Рј, Рё РіРѕСЂРѕРґ РїСЂРµРІСЂР°С‚РёР»СЃСЏ РІ СЂСѓРёРЅС‹.\n";
 			break;
 		}
 	}
@@ -91,16 +91,16 @@ int main() {
 		double P = totalDead / static_cast<double>(TOTAL_ROUNDS);
 		double L = static_cast<double>(currentArea) / static_cast<double>(currentPopulation);
 		if (P > 0.33 || L < 7.0) {
-			std::cout << "\nИз-за вашей некомпетентности в управлении, народ устроил бунт и изгнал вас их города.Теперь вы вынуждены влачить жалкое существование в изгнании\n";
+			std::cout << "\nРР·-Р·Р° РІР°С€РµР№ РЅРµРєРѕРјРїРµС‚РµРЅС‚РЅРѕСЃС‚Рё РІ СѓРїСЂР°РІР»РµРЅРёРё, РЅР°СЂРѕРґ СѓСЃС‚СЂРѕРёР» Р±СѓРЅС‚ Рё РёР·РіРЅР°Р» РІР°СЃ РёС… РіРѕСЂРѕРґР°.РўРµРїРµСЂСЊ РІС‹ РІС‹РЅСѓР¶РґРµРЅС‹ РІР»Р°С‡РёС‚СЊ Р¶Р°Р»РєРѕРµ СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёРµ РІ РёР·РіРЅР°РЅРёРё\n";
 		}
 		else if (P > 0.1 || L < 9.0) {
-			std::cout << "\nВы правили железной рукой, подобно Нерону и Ивану Грозному. Народ вздохнул с облегчением, и никто больше не желает видеть вас правителем\n";
+			std::cout << "\nР’С‹ РїСЂР°РІРёР»Рё Р¶РµР»РµР·РЅРѕР№ СЂСѓРєРѕР№, РїРѕРґРѕР±РЅРѕ РќРµСЂРѕРЅСѓ Рё РРІР°РЅСѓ Р“СЂРѕР·РЅРѕРјСѓ. РќР°СЂРѕРґ РІР·РґРѕС…РЅСѓР» СЃ РѕР±Р»РµРіС‡РµРЅРёРµРј, Рё РЅРёРєС‚Рѕ Р±РѕР»СЊС€Рµ РЅРµ Р¶РµР»Р°РµС‚ РІРёРґРµС‚СЊ РІР°СЃ РїСЂР°РІРёС‚РµР»РµРј\n";
 		}
 		else if (P > 0.03 || L < 10.0) {
-			std::cout << "\nВы справились вполне неплохо, у вас, конечно, есть недоброжелатели, но многие хотели бы увидеть вас во главе города снова\n";
+			std::cout << "\nР’С‹ СЃРїСЂР°РІРёР»РёСЃСЊ РІРїРѕР»РЅРµ РЅРµРїР»РѕС…Рѕ, Сѓ РІР°СЃ, РєРѕРЅРµС‡РЅРѕ, РµСЃС‚СЊ РЅРµРґРѕР±СЂРѕР¶РµР»Р°С‚РµР»Рё, РЅРѕ РјРЅРѕРіРёРµ С…РѕС‚РµР»Рё Р±С‹ СѓРІРёРґРµС‚СЊ РІР°СЃ РІРѕ РіР»Р°РІРµ РіРѕСЂРѕРґР° СЃРЅРѕРІР°\n";
 		}
 		else {
-			std::cout << "\nФантастика! Карл Великий, Дизраэли и Джефферсон вместе не справились бы лучше\n";
+			std::cout << "\nР¤Р°РЅС‚Р°СЃС‚РёРєР°! РљР°СЂР» Р’РµР»РёРєРёР№, Р”РёР·СЂР°СЌР»Рё Рё Р”Р¶РµС„С„РµСЂСЃРѕРЅ РІРјРµСЃС‚Рµ РЅРµ СЃРїСЂР°РІРёР»РёСЃСЊ Р±С‹ Р»СѓС‡С€Рµ\n";
 		}
 	}
 	system("pause");
@@ -109,7 +109,7 @@ int main() {
 int playRound(int numRound, int& currentPopulation, int& currentWheat, int& currentArea, int& currentAreaFields, int& currentDead, int& currentArrived,
 	bool& hadPlague, int& wheatFromAcre, int& wheatEaten, int& priceForAcre, double& totalDead) {
 	if (numRound > 1) {
-		std::cout << "\nВыйти и сохранить текущий результат? Y/n ";
+		std::cout << "\nР’С‹Р№С‚Рё Рё СЃРѕС…СЂР°РЅРёС‚СЊ С‚РµРєСѓС‰РёР№ СЂРµР·СѓР»СЊС‚Р°С‚? Y/n ";
 		std::string reply;
 		std::cin >> reply;
 		bool continueRound = true;
@@ -120,7 +120,7 @@ int playRound(int numRound, int& currentPopulation, int& currentWheat, int& curr
 				saveFile << numRound << "\n" << currentPopulation << "\n" << currentWheat << "\n" << currentArea << "\n" << currentAreaFields << "\n" <<
 					currentDead << "\n" << currentArrived << "\n" << hadPlague << "\n" << wheatFromAcre << "\n" << wheatEaten << "\n" << priceForAcre << "\n" << totalDead;
 				if (saveFile.fail()) {
-					std::cout << "Не удалось сохранить результат! Продолжить игру? Y/n ";
+					std::cout << "РќРµ СѓРґР°Р»РѕСЃСЊ СЃРѕС…СЂР°РЅРёС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚! РџСЂРѕРґРѕР»Р¶РёС‚СЊ РёРіСЂСѓ? Y/n ";
 					std::cin >> reply;
 					if (!(reply.front() == 'Y' || reply.front() == 'y')) {
 						continueRound = false;
@@ -138,101 +138,101 @@ int playRound(int numRound, int& currentPopulation, int& currentWheat, int& curr
 	}
 
 	priceForAcre = MIN_PRICE_ACRE + rand() % (MAX_PRICE_ACRE - MIN_PRICE_ACRE + 1);
-	std::cout << "\nМой повелитель, соизволь поведать тебе\n";
-	std::cout << "в году " << numRound << " твоего высочайшего правления\n";
+	std::cout << "\nРњРѕР№ РїРѕРІРµР»РёС‚РµР»СЊ, СЃРѕРёР·РІРѕР»СЊ РїРѕРІРµРґР°С‚СЊ С‚РµР±Рµ\n";
+	std::cout << "РІ РіРѕРґСѓ " << numRound << " С‚РІРѕРµРіРѕ РІС‹СЃРѕС‡Р°Р№С€РµРіРѕ РїСЂР°РІР»РµРЅРёСЏ\n";
 	if (numRound > 1) {
 		if (currentDead > 0) {
-			std::cout << currentDead << " " << getFormPeople(currentDead) << " умерли с голоду";
+			std::cout << currentDead << " " << getFormPeople(currentDead) << " СѓРјРµСЂР»Рё СЃ РіРѕР»РѕРґСѓ";
 			if (currentArrived > 0) {
-				std::cout << ", и ";
+				std::cout << ", Рё ";
 			}
 		}
 		if (currentArrived > 0) {
-			std::cout << currentArrived << " " << getFormPeople(currentArrived) << " прибыли в наш великий город";
+			std::cout << currentArrived << " " << getFormPeople(currentArrived) << " РїСЂРёР±С‹Р»Рё РІ РЅР°С€ РІРµР»РёРєРёР№ РіРѕСЂРѕРґ";
 		}
 		if (currentDead > 0 || currentArrived > 0) {
 			std::cout << ";\n";
 		}
 	}
 	if (hadPlague) {
-		std::cout << "Чума уничтожила половину населения;\n";
+		std::cout << "Р§СѓРјР° СѓРЅРёС‡С‚РѕР¶РёР»Р° РїРѕР»РѕРІРёРЅСѓ РЅР°СЃРµР»РµРЅРёСЏ;\n";
 	}
-	std::cout << "Население города сейчас составляет " << currentPopulation << " " << getFormPeople(currentPopulation) << ";\n";
+	std::cout << "РќР°СЃРµР»РµРЅРёРµ РіРѕСЂРѕРґР° СЃРµР№С‡Р°СЃ СЃРѕСЃС‚Р°РІР»СЏРµС‚ " << currentPopulation << " " << getFormPeople(currentPopulation) << ";\n";
 	if (numRound > 1) {
-		std::cout << "Мы собрали " << currentAreaFields * wheatFromAcre << " " << getFormBushels(currentAreaFields * wheatFromAcre) << " пшеницы, по "
-			<< wheatFromAcre << " " << getFormBushels(wheatFromAcre) << " с акра;\n";
-		std::cout << "Крысы истребили " << wheatEaten << " " << getFormBushels(wheatEaten) << " пшеницы, оставив "
-			<< currentWheat << " " << getFormBushels(currentWheat) << " в амбарах;\n";
+		std::cout << "РњС‹ СЃРѕР±СЂР°Р»Рё " << currentAreaFields * wheatFromAcre << " " << getFormBushels(currentAreaFields * wheatFromAcre) << " РїС€РµРЅРёС†С‹, РїРѕ "
+			<< wheatFromAcre << " " << getFormBushels(wheatFromAcre) << " СЃ Р°РєСЂР°;\n";
+		std::cout << "РљСЂС‹СЃС‹ РёСЃС‚СЂРµР±РёР»Рё " << wheatEaten << " " << getFormBushels(wheatEaten) << " РїС€РµРЅРёС†С‹, РѕСЃС‚Р°РІРёРІ "
+			<< currentWheat << " " << getFormBushels(currentWheat) << " РІ Р°РјР±Р°СЂР°С…;\n";
 	}
 	else {
-		std::cout << "В амбарах сейчас " << currentWheat << " " << getFormBushels(currentWheat) << " пшеницы;\n";
+		std::cout << "Р’ Р°РјР±Р°СЂР°С… СЃРµР№С‡Р°СЃ " << currentWheat << " " << getFormBushels(currentWheat) << " РїС€РµРЅРёС†С‹;\n";
 	}
-	std::cout << "Город сейчас занимает " << currentArea << " " << getFormAcres(currentArea) << ";\n";
-	std::cout << "1 акр земли стоит сейчас " << priceForAcre << " " << getFormBushels(priceForAcre) << ".\n\n";
+	std::cout << "Р“РѕСЂРѕРґ СЃРµР№С‡Р°СЃ Р·Р°РЅРёРјР°РµС‚ " << currentArea << " " << getFormAcres(currentArea) << ";\n";
+	std::cout << "1 Р°РєСЂ Р·РµРјР»Рё СЃС‚РѕРёС‚ СЃРµР№С‡Р°СЃ " << priceForAcre << " " << getFormBushels(priceForAcre) << ".\n\n";
 
-	std::cout << "Что пожелаешь, повелитель?\n";
+	std::cout << "Р§С‚Рѕ РїРѕР¶РµР»Р°РµС€СЊ, РїРѕРІРµР»РёС‚РµР»СЊ?\n";
 	int newArea;
 	int newToEat;
 	int newToPlant;
 	constexpr auto maxSize = std::numeric_limits<std::streamsize>::max();
-	std::cout << "Сколько акров земли повелеваешь купить? ";
+	std::cout << "РЎРєРѕР»СЊРєРѕ Р°РєСЂРѕРІ Р·РµРјР»Рё РїРѕРІРµР»РµРІР°РµС€СЊ РєСѓРїРёС‚СЊ? ";
 	std::cin >> newArea;
 	while (std::cin.fail() || newArea < -currentArea) {
 		std::cin.clear();
 		std::cin.ignore(maxSize, '\n');
-		std::cout << "О повелитель, мы не знаем таких чисел!\n";
-		std::cout << "Сколько акров земли повелеваешь купить? ";
+		std::cout << "Рћ РїРѕРІРµР»РёС‚РµР»СЊ, РјС‹ РЅРµ Р·РЅР°РµРј С‚Р°РєРёС… С‡РёСЃРµР»!\n";
+		std::cout << "РЎРєРѕР»СЊРєРѕ Р°РєСЂРѕРІ Р·РµРјР»Рё РїРѕРІРµР»РµРІР°РµС€СЊ РєСѓРїРёС‚СЊ? ";
 		std::cin >> newArea;
 	}
 	
-	std::cout << "Сколько бушелей пшеницы повелеваешь съесть? ";	
+	std::cout << "РЎРєРѕР»СЊРєРѕ Р±СѓС€РµР»РµР№ РїС€РµРЅРёС†С‹ РїРѕРІРµР»РµРІР°РµС€СЊ СЃСЉРµСЃС‚СЊ? ";	
 	std::cin >> newToEat;
 	while (std::cin.fail() || newToEat < 0) {
 		std::cin.clear();
 		std::cin.ignore(maxSize, '\n');
-		std::cout << "О повелитель, мы не знаем таких чисел!\n";
-		std::cout << "Сколько бушелей пшеницы повелеваешь съесть? ";
+		std::cout << "Рћ РїРѕРІРµР»РёС‚РµР»СЊ, РјС‹ РЅРµ Р·РЅР°РµРј С‚Р°РєРёС… С‡РёСЃРµР»!\n";
+		std::cout << "РЎРєРѕР»СЊРєРѕ Р±СѓС€РµР»РµР№ РїС€РµРЅРёС†С‹ РїРѕРІРµР»РµРІР°РµС€СЊ СЃСЉРµСЃС‚СЊ? ";
 		std::cin >> newToEat;
 	}
 	
-	std::cout << "Сколько акров земли повелеваешь засеять? ";	
+	std::cout << "РЎРєРѕР»СЊРєРѕ Р°РєСЂРѕРІ Р·РµРјР»Рё РїРѕРІРµР»РµРІР°РµС€СЊ Р·Р°СЃРµСЏС‚СЊ? ";	
 	std::cin >> newToPlant;
 	while (std::cin.fail() || newToPlant < 0 || newToPlant > currentArea) {
 		std::cin.clear();
 		std::cin.ignore(maxSize, '\n');
-		std::cout << "О повелитель, мы не знаем таких чисел!\n";
-		std::cout << "Сколько акров земли повелеваешь засеять? ";
+		std::cout << "Рћ РїРѕРІРµР»РёС‚РµР»СЊ, РјС‹ РЅРµ Р·РЅР°РµРј С‚Р°РєРёС… С‡РёСЃРµР»!\n";
+		std::cout << "РЎРєРѕР»СЊРєРѕ Р°РєСЂРѕРІ Р·РµРјР»Рё РїРѕРІРµР»РµРІР°РµС€СЊ Р·Р°СЃРµСЏС‚СЊ? ";
 		std::cin >> newToPlant;
 	}
 
 	while (currentWheat < newArea * priceForAcre + newToEat + round(static_cast<double>(newToPlant) * PRICE_PLANT_ACRE)) {
-		std::cout << "О, повелитель, пощади нас! У нас только " << currentPopulation << " " << getFormPeople(currentPopulation)
-			<< ", " << currentWheat << " " << getFormBushels(currentWheat) << " пшеницы и " << currentArea << " " << getFormAcres(currentArea) << " земли!\n";
-		std::cout << "Сколько акров земли повелеваешь купить? ";
+		std::cout << "Рћ, РїРѕРІРµР»РёС‚РµР»СЊ, РїРѕС‰Р°РґРё РЅР°СЃ! РЈ РЅР°СЃ С‚РѕР»СЊРєРѕ " << currentPopulation << " " << getFormPeople(currentPopulation)
+			<< ", " << currentWheat << " " << getFormBushels(currentWheat) << " РїС€РµРЅРёС†С‹ Рё " << currentArea << " " << getFormAcres(currentArea) << " Р·РµРјР»Рё!\n";
+		std::cout << "РЎРєРѕР»СЊРєРѕ Р°РєСЂРѕРІ Р·РµРјР»Рё РїРѕРІРµР»РµРІР°РµС€СЊ РєСѓРїРёС‚СЊ? ";
 		std::cin >> newArea;
 		while (std::cin.fail() || newArea < -currentArea) {
 			std::cin.clear();
 			std::cin.ignore(maxSize, '\n');
-			std::cout << "О повелитель, мы не знаем таких чисел!\n";
-			std::cout << "Сколько акров земли повелеваешь купить? ";
+			std::cout << "Рћ РїРѕРІРµР»РёС‚РµР»СЊ, РјС‹ РЅРµ Р·РЅР°РµРј С‚Р°РєРёС… С‡РёСЃРµР»!\n";
+			std::cout << "РЎРєРѕР»СЊРєРѕ Р°РєСЂРѕРІ Р·РµРјР»Рё РїРѕРІРµР»РµРІР°РµС€СЊ РєСѓРїРёС‚СЊ? ";
 			std::cin >> newArea;
 		}
-		std::cout << "Сколько бушелей пшеницы повелеваешь съесть? ";
+		std::cout << "РЎРєРѕР»СЊРєРѕ Р±СѓС€РµР»РµР№ РїС€РµРЅРёС†С‹ РїРѕРІРµР»РµРІР°РµС€СЊ СЃСЉРµСЃС‚СЊ? ";
 		std::cin >> newToEat;
 		while (std::cin.fail() || newToEat < 0) {
 			std::cin.clear();
 			std::cin.ignore(maxSize, '\n');
-			std::cout << "О повелитель, мы не знаем таких чисел!\n";
-			std::cout << "Сколько бушелей пшеницы повелеваешь съесть? ";
+			std::cout << "Рћ РїРѕРІРµР»РёС‚РµР»СЊ, РјС‹ РЅРµ Р·РЅР°РµРј С‚Р°РєРёС… С‡РёСЃРµР»!\n";
+			std::cout << "РЎРєРѕР»СЊРєРѕ Р±СѓС€РµР»РµР№ РїС€РµРЅРёС†С‹ РїРѕРІРµР»РµРІР°РµС€СЊ СЃСЉРµСЃС‚СЊ? ";
 			std::cin >> newToEat;
 		}
-		std::cout << "Сколько акров земли повелеваешь засеять? ";
+		std::cout << "РЎРєРѕР»СЊРєРѕ Р°РєСЂРѕРІ Р·РµРјР»Рё РїРѕРІРµР»РµРІР°РµС€СЊ Р·Р°СЃРµСЏС‚СЊ? ";
 		std::cin >> newToPlant;
 		while (std::cin.fail() || newToPlant < 0 || newToPlant > currentArea) {
 			std::cin.clear();
 			std::cin.ignore(maxSize, '\n');
-			std::cout << "О повелитель, мы не знаем таких чисел!\n";
-			std::cout << "Сколько акров земли повелеваешь засеять? ";
+			std::cout << "Рћ РїРѕРІРµР»РёС‚РµР»СЊ, РјС‹ РЅРµ Р·РЅР°РµРј С‚Р°РєРёС… С‡РёСЃРµР»!\n";
+			std::cout << "РЎРєРѕР»СЊРєРѕ Р°РєСЂРѕРІ Р·РµРјР»Рё РїРѕРІРµР»РµРІР°РµС€СЊ Р·Р°СЃРµСЏС‚СЊ? ";
 			std::cin >> newToPlant;
 		}
 	}
@@ -277,13 +277,13 @@ int playRound(int numRound, int& currentPopulation, int& currentWheat, int& curr
 std::string getFormPeople(int number) {
 	int tempDigit = number % 10;
 	if (tempDigit <= 1 || tempDigit >= 5) {
-		return "человек";
+		return "С‡РµР»РѕРІРµРє";
 	}
 	tempDigit = (number % 100) / 10;
 	if (tempDigit == 1) {
-		return "человек";
+		return "С‡РµР»РѕРІРµРє";
 	}
-	return "человека";
+	return "С‡РµР»РѕРІРµРєР°";
 }
 
 std::string getFormBushels(int number) {
@@ -291,20 +291,20 @@ std::string getFormBushels(int number) {
 	if (tempDigit == 1) {
 		tempDigit = (number % 100) / 10;
 		if (tempDigit == 1) {
-			return "бушелей";
+			return "Р±СѓС€РµР»РµР№";
 		}
 		else {
-			return "бушель";
+			return "Р±СѓС€РµР»СЊ";
 		}
 	}
 	if (tempDigit == 0 || tempDigit >= 5) {
-		return "бушелей";
+		return "Р±СѓС€РµР»РµР№";
 	}
 	tempDigit = (number % 100) / 10;
 	if (tempDigit == 1) {
-		return "бушелей";
+		return "Р±СѓС€РµР»РµР№";
 	}
-	return "бушеля";
+	return "Р±СѓС€РµР»СЏ";
 }
 
 std::string getFormAcres(int number) {
@@ -312,18 +312,18 @@ std::string getFormAcres(int number) {
 	if (tempDigit == 1) {
 		tempDigit = (number % 100) / 10;
 		if (tempDigit == 1) {
-			return "акров";
+			return "Р°РєСЂРѕРІ";
 		}
 		else {
-			return "акр";
+			return "Р°РєСЂ";
 		}
 	}
 	if (tempDigit == 0 || tempDigit >= 5) {
-		return "акров";
+		return "Р°РєСЂРѕРІ";
 	}
 	tempDigit = (number % 100) / 10;
 	if (tempDigit == 1) {
-		return "акров";
+		return "Р°РєСЂРѕРІ";
 	}
-	return "акра";
+	return "Р°РєСЂР°";
 }
