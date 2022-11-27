@@ -116,7 +116,8 @@ namespace task2_tests
 			for (int i = 0; i < 3; ++i) {
 				a.insert(i, i + 1);
 			}
-			Array<int> b = std::move(a);
+			Array<int> b;
+			b = std::move(a);
 			Assert::AreEqual(b[0], 1);
 			Assert::AreEqual(b[1], 2);
 			Assert::AreEqual(b[2], 3);
@@ -132,13 +133,13 @@ namespace task2_tests
 				a.insert(i, i + 1);
 			}
 			int i = 0;
-			for (auto it = a.iterator(); it.hasNext(); it.next()) {
-				Assert::IsTrue(it.get() == a[i]);
+			for (auto it = a.begin(); it.hasNext(); ++it) {
+				Assert::IsTrue(*it == a[i]);
 				++i;
 			}
 			i = a.size() - 1;
-			for (auto it = a.reverseIterator(); it.hasNext(); it.next()) {
-				Assert::IsTrue(it.get() == a[i]);
+			for (auto it = a.rbegin(); it.hasNext(); ++it) {
+				Assert::IsTrue(*it == a[i]);
 				--i;
 			}
 		}

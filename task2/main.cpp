@@ -9,8 +9,8 @@ int main() {
 	for (int i = 0; i < a.size(); ++i)
 		a[i] *= 2;
 
-	for (auto it = a.iterator(); it.hasNext(); it.next())
-		std::cout << it.get() << std::endl;
+	for (auto it = a.begin(); it.hasNext(); ++it)
+		std::cout << *it << std::endl;
 	system("pause");
 	return 0;
 }

@@ -15,7 +15,6 @@ public:
 
 	void swap(Array& rhs);
 	Array& operator=(Array rhs);
-	Array& operator=(Array&& rhs);
 	int insert(const T& value);
 	int insert(int index, const T& value);
 	void remove(int index);
@@ -48,31 +47,118 @@ public:
 	class ConstIterator
 	{
 	public:
-		ConstIterator(Array* p, bool isReverse)
+		ConstIterator()
+			: arrayData_(nullptr),
+			isReverse_(false),
+			index_(0)
+		{};
+
+		ConstIterator(Array* p, bool isReverse, int index)
 			: arrayData_(p),
-			isReverse_(isReverse)
-		{
-			if (isReverse_) {
-				index_ = arrayData_->size() - 1;
-			}
-			else {
-				index_ = 0;
-			}
-		};
+			isReverse_(isReverse),
+			index_(index)
+		{};
 
-		const T& get() const
+		bool operator==(const ConstIterator& rhs)
 		{
-			return (*arrayData_)[index_];
-		}		
+			return (arrayData_ == rhs.arrayData_ && index_ == rhs.index_);
+		}
 
-		void next()
+		bool operator!=(const ConstIterator& rhs)
+		{
+			return !(*this == rhs);
+		}
+
+		bool operator>(const ConstIterator& rhs)
+		{
+			return (arrayData_ == rhs.arrayData_ && index_ > rhs.index_);
+		}
+
+		bool operator<(const ConstIterator& rhs)
+		{
+			return (arrayData_ == rhs.arrayData_ && index_ < rhs.index_);
+		}
+
+		bool operator>=(const ConstIterator& rhs)
+		{
+			return (arrayData_ == rhs.arrayData_ && index_ >= rhs.index_);
+		}
+
+		bool operator<=(const ConstIterator& rhs)
+		{
+			return (arrayData_ == rhs.arrayData_ && index_ <= rhs.index_);
+		}
+
+		ConstIterator& operator++()
 		{
 			if (isReverse_) {
 				--index_;
 			}
 			else {
 				++index_;
-			}			
+			}
+			return *this;
+		}
+
+		ConstIterator operator++(int)
+		{
+			ConstIterator temp = *this;
+			++*this;
+			return temp;
+		}
+
+		ConstIterator& operator--()
+		{
+			if (isReverse_) {
+				++index_;
+			}
+			else {
+				--index_;
+			}
+			return *this;
+		}
+
+		ConstIterator operator--(int)
+		{
+			ConstIterator temp = *this;
+			--*this;
+			return temp;
+		}
+
+		ConstIterator operator+(int value)
+		{
+			ConstIterator result = *this;
+			result.index_ += value;
+			return result;
+		}
+
+		ConstIterator operator-(int value)
+		{
+			ConstIterator result = *this;
+			result.index_ -= value;
+			return result;
+		}
+
+		int operator-(const ConstIterator& rhs)
+		{
+			return (index_ - rhs.index_);
+		}
+
+		ConstIterator& operator+=(int value)
+		{
+			index_ += value;
+			return *this;
+		}
+
+		ConstIterator& operator-=(int value)
+		{
+			index_ -= value;
+			return *this;
+		}
+
+		const T& operator*()
+		{
+			return (*arrayData_)[index_];
 		}
 
 		bool hasNext() const
@@ -85,40 +171,179 @@ public:
 			}			
 		}
 
-	protected:
+	private:
 		Array* arrayData_;
 		int index_;
 		bool isReverse_;
 	};
 
-	class Iterator : public ConstIterator
+	class Iterator
 	{
 	public:
-		Iterator(Array* p, bool isReverse)
-			: ConstIterator(p, isReverse)
+		Iterator()
+			: arrayData_(nullptr),
+			isReverse_(false),
+			index_(0)
 		{};
 
-		void set(const T& value)
+		Iterator(Array* p, bool isReverse, int index)
+			: arrayData_(p),
+			isReverse_(isReverse),
+			index_(index)
+		{};
+
+		bool operator==(const Iterator& rhs)
 		{
-			(*ConstIterator::arrayData_)[ConstIterator::index_] = value;
+			return (arrayData_ == rhs.arrayData_ && index_ == rhs.index_);
 		}
+
+		bool operator!=(const Iterator& rhs)
+		{
+			return !(*this == rhs);
+		}
+
+		bool operator>(const Iterator& rhs)
+		{
+			return (arrayData_ == rhs.arrayData_ && index_ > rhs.index_);
+		}
+
+		bool operator<(const Iterator& rhs)
+		{
+			return (arrayData_ == rhs.arrayData_ && index_ < rhs.index_);
+		}
+
+		bool operator>=(const Iterator& rhs)
+		{
+			return (arrayData_ == rhs.arrayData_ && index_ >= rhs.index_);
+		}
+
+		bool operator<=(const Iterator& rhs)
+		{
+			return (arrayData_ == rhs.arrayData_ && index_ <= rhs.index_);
+		}
+
+		Iterator& operator++()
+		{
+			if (isReverse_) {
+				--index_;
+			}
+			else {
+				++index_;
+			}
+			return *this;
+		}
+
+		Iterator operator++(int)
+		{
+			ConstIterator temp = *this;
+			++*this;
+			return temp;
+		}
+
+		Iterator& operator--()
+		{
+			if (isReverse_) {
+				++index_;
+			}
+			else {
+				--index_;
+			}
+			return *this;
+		}
+
+		Iterator operator--(int)
+		{
+			Iterator temp = *this;
+			--*this;
+			return temp;
+		}
+
+		Iterator operator+(int value)
+		{
+			Iterator result = *this;
+			result.index_ += value;
+			return result;
+		}
+
+		Iterator operator-(int value)
+		{
+			Iterator result = *this;
+			result.index_ -= value;
+			return result;
+		}
+
+		int operator-(const Iterator& rhs)
+		{
+			return (index_ - rhs.index_);
+		}
+
+		Iterator& operator+=(int value)
+		{
+			index_ += value;
+			return *this;
+		}
+
+		Iterator& operator-=(int value)
+		{
+			index_ -= value;
+			return *this;
+		}
+
+		T& operator*()
+		{
+			return (*arrayData_)[index_];
+		}
+
+		bool hasNext() const
+		{
+			if (isReverse_) {
+				return index_ >= 0;
+			}
+			else {
+				return index_ < arrayData_->size();
+			}
+		}
+
+	private:
+		Array* arrayData_;
+		int index_;
+		bool isReverse_;
 	};
 
-	Iterator iterator()
+	Iterator begin()
 	{
-		return Iterator(this, false);
+		return Iterator(this, false, 0);
 	}
-	ConstIterator iterator() const
+	Iterator end()
 	{
-		return ConstIterator(this, false);
+		return Iterator(this, false, size_);
 	}
-	Iterator reverseIterator()
+
+	ConstIterator cbegin()
 	{
-		return Iterator(this, true);
+		return ConstIterator(this, false, 0);
 	}
-	ConstIterator reverseIterator() const
+	ConstIterator cend()
 	{
-		return ConstIterator(this, true);
+		return ConstIterator(this, false, size_);
+	}
+
+	Iterator rbegin()
+	{
+		return Iterator(this, true, size_ - 1);
+	}
+	Iterator rend()
+	{
+		return Iterator(this, true, -1);
+	}
+
+	ConstIterator crbegin()
+	{
+		return ConstIterator(this, true, size_ - 1);
+	}
+	ConstIterator crend()
+	{
+		return ConstIterator(this, true, -1);
 	}
 
 private:
@@ -198,27 +423,10 @@ Array<T>& Array<T>::operator=(Array rhs)
 }
 
 template<typename T>
-Array<T>& Array<T>::operator=(Array&& rhs)
-{
-	if (this != &rhs) {
-		for (int i = 0; i < size_; ++i) {
-			data_[i].~T();
-		}
-		free(data_);
-		data_ = rhs.data_;
-		capacity_ = rhs.capacity_;
-		size_ = rhs.size_;
-		rhs.data_ = nullptr;
-		rhs.size_ = 0;
-	}
-	return *this;
-}
-
-template<typename T>
 int Array<T>::insert(const T& value)
 {
 	if (size_ == capacity_) {
-		capacity_ *= EXPANSION_RATIO;
+		capacity_ *= static_cast<int>(EXPANSION_RATIO);
 		T* p = (T*)malloc(capacity_ * sizeof(T));
 		for (int i = 0; i < size_; ++i) {
 			new(p + i) T(std::move(data_[i]));
@@ -236,7 +444,7 @@ int Array<T>::insert(int index, const T& value)
 {
 	if (index >= 0 && index < size_) {
 		if (size_ == capacity_) {
-			capacity_ *= EXPANSION_RATIO;
+			capacity_ *= static_cast<int>(EXPANSION_RATIO);
 			T* p = (T*)malloc(capacity_ * sizeof(T));
 			for (int i = 0; i < index; ++i) {
 				new(p + i) T(std::move(data_[i]));
